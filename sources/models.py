@@ -1,3 +1,18 @@
 from django.db import models
 
 # Create your models here.
+
+class Source(models.Model):
+    name = models.CharField(max_length=200)
+    url = models.URLField(max_length=200)
+    finder = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
+class Analysis(models.Model):
+    source = models.ForeignKey(Source, on_delete=models.CASCADE)
+    date = models.DateTimeField('date published')
+    html = models.TextField()
+    results = models.JSONField()
