@@ -1,0 +1,7 @@
+{% if sources %}
+<ul>
+  {% for source in sources %}
+  <li><a href="{{ source.url }}">{{ source.name }}</a></li>
+  {% endfor %}  
+</ul>
+{% endif %}
