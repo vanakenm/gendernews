@@ -1,0 +1,1 @@
+web: gunicorn gendernews.wsgi --log-file -
