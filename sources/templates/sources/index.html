@@ -1,7 +1,16 @@
 {% if sources %}
-<ul>
+<div>
   {% for source in sources %}
-  <li><a href="{{ source.url }}">{{ source.name }}</a></li>
+  <div>
+    <a href="/sources/{{ source.id }}">{{ source.name }}</a>
+    <p>{{ source.url }}</p>
+    <img src="{{ source.logoUrl }}" />
+    <p>
+      <h4>Last analysis {{ source.last_analysis.date|timesince }} ago:</h4>
+      <p>{{ source.last_analysis.stats.total }} names identified, with {{ source.last_analysis.stats.male }} male and {{ source.last_analysis.stats.female }} female</p>
+    
+    </p>  
+    </div>
   {% endfor %}  
-</ul>
+</div>
 {% endif %}
