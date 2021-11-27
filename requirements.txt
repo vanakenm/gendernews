@@ -7,7 +7,9 @@ certifi==2021.10.8
 charset-normalizer==2.0.8
 click==8.0.3
 cymem==2.0.6
+dj-database-url==0.5.0
 Django==3.2.9
+django-on-heroku==1.1.2
 fr-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.2.0/fr_core_news_sm-3.2.0-py3-none-any.whl
 gender-guesser==0.4.0
 idna==3.3
@@ -20,6 +22,7 @@ packaging==21.3
 pathy==0.6.1
 preshed==3.0.6
 psycopg2==2.9.2
+psycopg2-binary==2.9.2
 pydantic==1.8.2
 pyparsing==3.0.6
 pytz==2021.3
@@ -37,3 +40,4 @@ typer==0.4.0
 typing-extensions==4.0.0
 urllib3==1.26.7
 wasabi==0.8.2
+whitenoise==5.3.0
