@@ -26,3 +26,6 @@ class Analysis(models.Model):
       female = len(self.results) - male
 
       return {"male": male, "female": female, "total": len(self.results)}
+
+    def __str__(self):
+        return self.source.name + " - " + self.date
