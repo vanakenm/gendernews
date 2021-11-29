@@ -28,4 +28,4 @@ class Analysis(models.Model):
       return {"male": male, "female": female, "total": len(self.results)}
 
     def __str__(self):
-        return self.source.name + " - " + self.date
+        return self.source.name + " - " + self.date.strftime("%Y-%m-%d")
