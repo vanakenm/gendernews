@@ -43,3 +43,4 @@ class Command(BaseCommand):
             analysis.save()
 
         self.stdout.write(self.style.SUCCESS('Successfully ran analysis'))
+        return
