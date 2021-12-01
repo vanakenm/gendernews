@@ -3,6 +3,14 @@
     -moz-transform: scale(0.5, 0.5); 
     -moz-transform-origin: top left;
   }
+
+  .male, .mostly_male {
+    background-color: lightblue;
+  }
+
+  .female {
+    background-color: lightpink;
+  }
 </style>
 
 {% if source %}
@@ -14,7 +22,7 @@
     <p>{{ analysis.stats.total }} names identified, with {{ analysis.stats.male }} male and {{ analysis.stats.female }} female</p>
     <ul>
       {% for result in analysis.results %}
-      <li>{{ result.name }}: {{ result.gender }}</li>
+      <li>{{result.before}} <span class="{{ result.gender }}"> {{ result.name }}</span>{{ result.after }}</li>
       {% endfor %}
     </ul>
 

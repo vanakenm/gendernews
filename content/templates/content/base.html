@@ -1,0 +1,20 @@
+{% load static tailwind_tags %}
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>News check - statistiques sur les sites de news belges</title>
+    {% tailwind_css %}
+  </head>
+  <body class="bg-gray-50 font-serif leading-normal tracking-normal">
+    
+    {% include "content/header.html" %}
+    
+    {% block content %}
+    {% endblock %} 
+
+    {% include "content/footer.html" %}
+  </body>
+</html>
