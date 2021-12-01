@@ -24,8 +24,9 @@ class Analysis(models.Model):
     def stats(self):
       male = len([r for r in self.results if r["gender"] == "male" or r["gender"] == "mostly_male"])
       female = len(self.results) - male
+      total = len(self.results)
 
-      return {"male": male, "female": female, "total": len(self.results)}
+      return {"male": male, "malepc": (male * 100) / total, "femalepc": (female * 100) / total , "female": female, "total": total}
 
     def __str__(self):
         return self.source.name + " - " + self.date.strftime("%Y-%m-%d")
