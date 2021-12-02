@@ -6,7 +6,7 @@
   <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
       <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl">
-        Frequently asked questions
+        Questions fréquemment posées
       </h2>
       <dl class="mt-6 space-y-6 divide-y divide-gray-200">
         <div class="pt-6" x-data="{ open: false }" >
@@ -14,16 +14,9 @@
             <!-- Expand/collapse question button -->
             <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
               <span class="font-medium text-gray-900">
-                What&#039;s the best thing about Switzerland?
+                Que fait ce site ?
               </span>
               <span class="ml-6 h-7 flex items-center">
-                <!--
-                  Expand/collapse icon, toggle classes based on question open state.
-
-                  Heroicon name: outline/chevron-down
-
-                  Open: "-rotate-180", Closed: "rotate-0"
-                -->
                 <svg class="h-6 w-6 transform" :class="{'-rotate-180': open, 'rotate-0 ': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
@@ -32,11 +25,90 @@
           </dt>
           <dd class="mt-2 pr-12" x-show="open" id="faq-0">
             <p class="text-base text-gray-500">
-              I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
+              Le site analyse un groupe de site de nouvelles belges et tente d'identifier tout les noms de personnes citées avec leur genre. Les résultats que vous voyez donne une idée de la diversité de genre des nouvelles pour chaque site.
             </p>
           </dd>
         </div>
-
+        <div class="pt-6" x-data="{ open: false }" >
+          <dt class="text-lg">
+            <!-- Expand/collapse question button -->
+            <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
+              <span class="font-medium text-gray-900">
+                Pourquoi avoir crée ce site ?
+              </span>
+              <span class="ml-6 h-7 flex items-center">
+                <svg class="h-6 w-6 transform" :class="{'-rotate-180': open, 'rotate-0 ': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="open" id="faq-0">
+            <p class="text-base text-gray-500">
+              Nous pensons que la représentation est un élément important de la diversité - si toutes les nouvelles ne parlent jamais que d'hommes, elles vont contribuer à l'image d'un monde "par et pour les hommes".
+            </p>
+          </dd>
+        </div>
+        <div class="pt-6" x-data="{ open: false }" >
+          <dt class="text-lg">
+            <!-- Expand/collapse question button -->
+            <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
+              <span class="font-medium text-gray-900">
+                La diversité n'est elle que liée au genre ?
+              </span>
+              <span class="ml-6 h-7 flex items-center">
+                <svg class="h-6 w-6 transform" :class="{'-rotate-180': open, 'rotate-0 ': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="open" id="faq-0">
+            <p class="text-base text-gray-500">
+              Bien sur que non ! Mais comme dans toute initiative, il faut commençer quelque part.
+            </p>
+          </dd>
+        </div>
+        <div class="pt-6" x-data="{ open: false }" >
+          <dt class="text-lg">
+            <!-- Expand/collapse question button -->
+            <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
+              <span class="font-medium text-gray-900">
+                Est-il possible d'ajouter d'autres sources ?
+              </span>
+              <span class="ml-6 h-7 flex items-center">
+                <svg class="h-6 w-6 transform" :class="{'-rotate-180': open, 'rotate-0 ': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="open" id="faq-0">
+            <p class="text-base text-gray-500">
+              Il y a un petit travail à faire de notre côté pour ajouter une source de données supplémentaire, mais c'est assez rapide. Vous en voyez une qui devrait être rajoutée ? Faites le nous savoir via la <a class="underline" href="/contact">page de contact</a>.
+            </p>
+          </dd>
+        </div>
+        <div class="pt-6" x-data="{ open: false }" >
+          <dt class="text-lg">
+            <!-- Expand/collapse question button -->
+            <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
+              <span class="font-medium text-gray-900">
+                J'ai une autre question / un commentaire !
+              </span>
+              <span class="ml-6 h-7 flex items-center">
+                <svg class="h-6 w-6 transform" :class="{'-rotate-180': open, 'rotate-0 ': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="open" id="faq-0">
+            <p class="text-base text-gray-500">
+              Merci de l'envoyer via la <a class="underline" href="/contact">page de contact</a>.
+            </p>
+          </dd>
+        </div>
         <!-- More questions... -->
       </dl>
     </div>
