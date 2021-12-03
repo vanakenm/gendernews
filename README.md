@@ -17,15 +17,17 @@ Method for now is quite simple:
 
 ### Pages
 
+- [] Add text to dashboard
+- [] Add prev/next day to dashboard
+- [] Analysis detail page (with prev/next)
+- [] Contact (page ok, need to send email)
 - [x] Home: Explain what this is about
 - [x] Sources : Pick one for detail, see stats (today?)
-- [] Source: Today + history
-- [] Dashboard
-- [] Contact (page ok, need to send email)
+- [x] Dashboard
 
 ### Update analysis
 
-- [] Store all titles (to do some keywords analysis after?), not only those with identified names
+- [x] Store all titles (to do some keywords analysis after?), not only those with identified names
 - [x] Could create a "re-analyze" based on the saved html
   - add to the results: the complete sentence from which the name was extracted
   - will make it easy to higlight

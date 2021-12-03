@@ -25,7 +25,7 @@
           </dt>
           <dd class="mt-2 pr-12" x-show="open" id="faq-0">
             <p class="text-base text-gray-500">
-              Le site analyse un groupe de site de nouvelles belges et tente d'identifier tout les noms de personnes citées avec leur genre. Les résultats que vous voyez donne une idée de la diversité de genre des nouvelles pour chaque site.
+              Le site analyse un groupe de sites de nouvelles belges et tente d'identifier tout les noms de personnes citées avec leur genre. Les résultats que vous voyez donne une idée de la diversité de genre des nouvelles pour chaque site.
             </p>
           </dd>
         </div>
@@ -46,6 +46,26 @@
           <dd class="mt-2 pr-12" x-show="open" id="faq-0">
             <p class="text-base text-gray-500">
               Nous pensons que la représentation est un élément important de la diversité - si toutes les nouvelles ne parlent jamais que d'hommes, elles vont contribuer à l'image d'un monde "par et pour les hommes".
+            </p>
+          </dd>
+        </div>
+        <div class="pt-6" x-data="{ open: false }" >
+          <dt class="text-lg">
+            <!-- Expand/collapse question button -->
+            <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
+              <span class="font-medium text-gray-900">
+                Pourquoi se limiter aux sites d'informations francophones ?
+              </span>
+              <span class="ml-6 h-7 flex items-center">
+                <svg class="h-6 w-6 transform" :class="{'-rotate-180': open, 'rotate-0 ': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="open" id="faq-0">
+            <p class="text-base text-gray-500">
+              Nous sommes intéressé par faire le même exercices sur les sites néérlandophones. Il va nous falloir de l'aide pour la traduction - si vous êtes intéressé, faite le nous savoir via le formulaire de contact. Merci !
             </p>
           </dd>
         </div>
@@ -94,6 +114,26 @@
             <!-- Expand/collapse question button -->
             <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
               <span class="font-medium text-gray-900">
+                Comment est ce que cela fonctionne techniquement ?
+              </span>
+              <span class="ml-6 h-7 flex items-center">
+                <svg class="h-6 w-6 transform" :class="{'-rotate-180': open, 'rotate-0 ': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="open" id="faq-0">
+            <p class="text-base text-gray-500">
+              Le site est codé en <a href="https://www.djangoproject.com/">Django</a>. Les analyses sont faites grâce l'algorithme NER de Standford, via le package <a href="https://spacy.io/">Spacy</a>. Le code complet est disponible sur GitHub (un répertoire de code), plus spécifiquement ici: <a href="https://github.com/vanakenm/gendernews">https://github.com/vanakenm/gendernews</a>
+            </p>
+          </dd>
+        </div>
+        <div class="pt-6" x-data="{ open: false }" >
+          <dt class="text-lg">
+            <!-- Expand/collapse question button -->
+            <button type="button" @click="open = !open" class="text-left w-full flex justify-between items-start text-gray-400" aria-controls="faq-0" aria-expanded="false">
+              <span class="font-medium text-gray-900">
                 J'ai une autre question / un commentaire !
               </span>
               <span class="ml-6 h-7 flex items-center">
@@ -109,6 +149,7 @@
             </p>
           </dd>
         </div>
+        
         <!-- More questions... -->
       </dl>
     </div>

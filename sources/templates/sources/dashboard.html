@@ -7,6 +7,10 @@
       <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
         Résultats pour le {{ analyses.0.date|date:'l d F Y' }}
       </h2>
+      <p class="m-2 text-center text-gray-900">Comment lire ces chiffres ? Prenons la première source ({{ analyses.0.source.name }}) comme exemple. 
+        Le site a été analysés et {{ analyses.0.results.titles|length }} titres d'articles ont été identifiés. 
+        Sur ceux-ci, {{ analyses.0.stats.total }} noms de personnes ont été extraits, dont {{ analyses.0.stats.female }} noms de femmes, soit {{ analyses.0.stats.femalepc }}% du total. 
+      Pour plus d'information, cliquez n'importe où dans la case pour avoir accès au détail de l'analyse pour le site et jour concerné.</p>
     <div class="bg-white shadow overflow-GAUhidden sm:rounded-md">
       <ul role="list" class="divide-y divide-gray-200">
         {% for analysis in analyses %}
