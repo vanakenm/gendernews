@@ -22,9 +22,10 @@ class Analysis(models.Model):
     results = models.JSONField()
 
     def stats(self):
-      male = len([r for r in self.results if r["gender"] == "male" or r["gender"] == "mostly_male"])
-      female = len(self.results) - male
-      total = len(self.results)
+      names = self.results["names"]
+      male = len([r for r in names if r["gender"] == "male" or r["gender"] == "mostly_male"])
+      female = len(names) - male
+      total = len(names)
 
       return {"male": male, "malepc": (male * 100) / total, "femalepc": (female * 100) / total , "female": female, "total": total}
 

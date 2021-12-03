@@ -25,6 +25,7 @@ Method for now is quite simple:
 
 ### Update analysis
 
+- [] Store all titles (to do some keywords analysis after?), not only those with identified names
 - [x] Could create a "re-analyze" based on the saved html
   - add to the results: the complete sentence from which the name was extracted
   - will make it easy to higlight

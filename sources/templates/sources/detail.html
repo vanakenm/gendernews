@@ -33,15 +33,24 @@
       </div> 
     </div>
     <div>
-    <p>{{ analysis.stats.total }} names identified, with {{ analysis.stats.male }} men and {{ analysis.stats.female }} women</p>
+    <p>{{ analysis.stats.total }} names identified, with {{ analysis.stats.male }} men and {{ analysis.stats.female }} women out of {{ analysis.results.titles|length }} titles</p>
     <ul>
-      {% for result in analysis.results %}
+      {% for result in analysis.results.names %}
       <li>{{result.before}} <span class="{{ result.gender }}"> {{ result.name }}</span>{{ result.after }}</li>
       {% endfor %}
     </ul>
     
     <div class="main">
       <iframe id="zoom" src="/sources/{{ source.id }}/screenshots/{{ analysis.id }}" width="100%" height="800px" frameborder="0"></iframe>
+    </div>
+
+    <div class="titles">
+      <h3>Titles</h3>
+      <ul>
+        {% for title in analysis.results.titles %}
+        <li>{{ title }}</li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
   {% endfor %}  

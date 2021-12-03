@@ -13,7 +13,8 @@ class AnalysisCommand(BaseCommand):
     d = gender.Detector()
 
     def get_results(self, titles, name):
-      results = []
+      results = {}
+      names_found = []
       for(title) in titles:
           doc = self.nlp(title)
           for word in doc.ents:
@@ -26,7 +27,7 @@ class AnalysisCommand(BaseCommand):
                       end = start + len(found)
                       before = title[:start]
                       after = title[end:]
-                      results.append({
+                      names_found.append({
                         "name": found, 
                         "gender": gender, 
                         "source": name, 
@@ -34,5 +35,7 @@ class AnalysisCommand(BaseCommand):
                         "before": before,
                         "after": after
                       })
-                      # html = self.wrap(word.text, html)
+
+      results["names"] = names_found
+      results["titles"] = titles
       return results
