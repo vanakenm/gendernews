@@ -1,0 +1,21 @@
+<style>
+  .male, .mostly_male {
+    background-color: lightblue;
+  }
+  
+  .female {
+    background-color: lightpink;
+  }
+</style>
+<div class="flex container w-full h-8">
+  {% if stats.femalepc > 0 %}
+  <div style="width: {{ stats.femalepc }}%;" class="bg-pink-100 flex items-center justify-center">
+    <i class="fas fa-venus"></i>
+  </div>
+  {% endif %}
+  {% if stats.malepc > 0 %}
+  <div style="width: {{ stats.malepc }}%" class="bg-blue-100 flex items-center justify-center">
+    <i class="fas fa-mars"></i>
+  </div> 
+  {% endif %}
+</div>

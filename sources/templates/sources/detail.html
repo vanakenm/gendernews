@@ -6,14 +6,6 @@
     -moz-transform: scale(0.5, 0.5); 
     -moz-transform-origin: top left;
   }
-  
-  .male, .mostly_male {
-    background-color: lightblue;
-  }
-  
-  .female {
-    background-color: lightpink;
-  }
 </style>
 <div class="bg-gray-50">
   <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
@@ -24,14 +16,7 @@
     {% for analysis in analyses %}
     <div>
     <h2>Done on: {{ analysis.date }}</h2>
-    <div class="flex container w-full h-8" id="colors">
-      <div style="width: {{ analysis.stats.femalepc }}%;" class="bg-pink-100 flex items-center justify-center">
-        <i class="fas fa-venus"></i>
-      </div>
-      <div style="width: {{ analysis.stats.malepc }}%" class="bg-blue-100 flex items-center justify-center">
-        <i class="fas fa-mars"></i>
-      </div> 
-    </div>
+    {% include "sources/daily_chart.html" with stats=analysis.stats %}
     <div>
     <p>{{ analysis.stats.total }} names identified, with {{ analysis.stats.male }} men and {{ analysis.stats.female }} women out of {{ analysis.results.titles|length }} titles</p>
     <ul>

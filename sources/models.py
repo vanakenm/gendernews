@@ -27,7 +27,7 @@ class Analysis(models.Model):
       female = len(names) - male
       total = len(names)
 
-      return {"male": male, "malepc": (male * 100) / total, "femalepc": (female * 100) / total , "female": female, "total": total}
+      return {"male": male, "malepc": int((male * 100) / total), "femalepc": int((female * 100) / total) , "female": female, "total": total}
 
     def __str__(self):
         return self.source.name + " - " + self.date.strftime("%Y-%m-%d")

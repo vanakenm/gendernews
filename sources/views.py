@@ -28,3 +28,12 @@ def screenshot(request, source_id, analysis_id):
     response.headers["X-Frame-Options"] = "ALLOWALL"
 
     return response
+
+def dashboard(request):
+    sources = Source.objects.all()
+    analyses = [source.last_analysis() for source in sources]
+    context = {
+        'sources': sources,
+        'analyses': analyses
+    }
+    return render(request, 'sources/dashboard.html', context)
