@@ -8,8 +8,15 @@ class Source(models.Model):
     logoUrl = models.URLField(max_length=200, null=True)
     finder = models.CharField(max_length=20)
 
-    def last_analysis(self):
-        return self.analysis_set.latest('date')
+    def last_analysis(self, date=None):
+        if(date):
+          daily_records = self.analysis_set.filter(date__date=date)
+          if(daily_records.count() > 0):
+            return daily_records.latest('date')
+          else:
+            return None
+        else:
+          return self.analysis_set.latest('date')
 
     def __str__(self):
         return self.name

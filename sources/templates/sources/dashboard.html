@@ -5,7 +5,7 @@
   <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
     
       <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
-        Résultats pour le {{ analyses.0.date|date:'l d F Y' }}
+        Résultats pour le {{ day|date:'l j F Y' }}
       </h2>
       <p class="m-2 text-center text-gray-900">Comment lire ces chiffres ? Prenons la première source ({{ analyses.0.source.name }}) comme exemple. 
         Le site a été analysés et {{ analyses.0.results.titles|length }} titres d'articles ont été identifiés. 
@@ -13,17 +13,18 @@
       Pour plus d'information, cliquez n'importe où dans la case pour avoir accès au détail de l'analyse pour le site et jour concerné.</p>
     <div class="bg-white shadow overflow-GAUhidden sm:rounded-md">
       <ul role="list" class="divide-y divide-gray-200">
-        {% for analysis in analyses %}
+        {% for data in analyses %}
         <li>
-          <a href="source/{{ analysis.source.id }}/analysis/{{ analysis.id }}" class="block hover:bg-gray-50">
+          {% if data.1 %}
+          <a href="source/{{ data.0.id }}/analysis/{{ data.1.id }}" class="block hover:bg-gray-50">
             <div class="flex items-center px-4 py-4 sm:px-6">
               <div class="min-w-0 flex-1 flex items-center">
                 <div class="w-20">
-                  <img src="{{ analysis.source.logoUrl }}" class="h-6" />
+                  <img src="{{ data.0.logoUrl }}" class="h-6" />
                 </div>
                 <div class="flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                   <div>
-                    <p class="text-sm font-medium text-indigo-600 truncate">{{ analysis.source.name }}</p>
+                    <p class="text-sm font-medium text-indigo-600 truncate">{{ data.0.name }}</p>
                     <p class="mt-2 flex items-center text-sm text-gray-500">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -31,13 +32,13 @@
                           d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
                         </path>
                       </svg>
-                      <span class="truncate">{{analysis.source.url}}</span>
+                      <span class="truncate">{{data.0.url}}</span>
                     </p>
                   </div>
                   <div class="hidden md:block">
                     <div>
                       <p class="text-sm text-gray-900">
-                        {% include "sources/daily_chart.html" with stats=analysis.stats %}
+                        {% include "sources/daily_chart.html" with stats=data.1.stats %}
                       </p>
                       <p class="mt-2 flex items-center text-sm text-gray-500">
                         <!-- Heroicon name: solid/check-circle -->
@@ -47,7 +48,7 @@
                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clip-rule="evenodd" />
                         </svg>
-                        {{ analysis.stats.total }} noms identifiés dont {{ analysis.stats.male }} hommes et {{analysis.stats.female }} femmes
+                        {{ data.1.stats.total }} noms identifiés dont {{ data.1.stats.male }} hommes et {{data.1.stats.female }} femmes
                       </p>
                     </div>
                   </div>
@@ -64,12 +65,63 @@
               </div>
             </div>
           </a>
+          {% else %}
+            <div class="flex items-center px-4 py-4 sm:px-6">
+              <div class="min-w-0 flex-1 flex items-center">
+                <div class="w-20">
+                  <img src="{{ data.0.logoUrl }}" class="h-6" />
+                </div>
+                <div class="flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                  <div>
+                    <p class="text-sm font-medium text-indigo-600 truncate">{{ data.0.name }}</p>
+                    <p class="mt-2 flex items-center text-sm text-gray-500">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                        </path>
+                      </svg>
+                      <span class="truncate">{{data.0.url}}</span>
+                    </p>
+                  </div>
+                  <div class="hidden md:block">
+                    <div>
+                      <p class="mt-2 flex items-center text-sm text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Pas de données pour ce jour
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
     </div>
 
-
+  <div class="flex justify-between">
+    <div>
+        <a href="/sources/dashboard?date={{ previous_day|date:'Y-m-d' }}" class="flex text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 m-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          </svg>
+          jour précédent
+        </a>
+      </div>
+      {% if next_day %}
+    <div>
+      <a href="/sources/dashboard?date={{ next_day|date:'Y-m-d' }}" class="flex text-gray-600">jour suivant
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 m-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    {% endif %}
+  </div>
   </div>
 </div>
 {% endblock content %}

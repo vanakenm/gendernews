@@ -1,3 +1,4 @@
+import datetime
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from sources.models import Analysis, Source
@@ -31,9 +32,20 @@ def screenshot(request, source_id, analysis_id):
 
 def dashboard(request):
     sources = Source.objects.all()
-    analyses = [source.last_analysis() for source in sources]
+    today = datetime.datetime.today()
+    date_req = request.GET.get("date", None)
+    if(date_req):
+      date = datetime.datetime.strptime(date_req, "%Y-%m-%d")
+      analyses = [(source, source.last_analysis(date)) for source in sources]
+    else:
+      date = today
+      analyses = [(source, source.last_analysis()) for source in sources]
+      
+    
     context = {
-        'sources': sources,
-        'analyses': analyses
+        'analyses': analyses,
+        'day': date,
+        'next_day': date + datetime.timedelta(days=1) if today > date + datetime.timedelta(days=1) else None,
+        'previous_day': date - datetime.timedelta(days=1),
     }
     return render(request, 'sources/dashboard.html', context)
