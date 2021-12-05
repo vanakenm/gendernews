@@ -12,9 +12,9 @@ Method for now is quite simple:
 
 ### v1
 
-- [ ] Add prev/next day to dashboard
-- [ ] Analysis detail page (with prev/next)
 - [ ] Contact (page ok, need to send email)
+- [x] Add prev/next day to dashboard
+- [x] Analysis detail page (with prev/next)
 - [x] Let's start in french, but translatable already?
 - [x] Add text to dashboard
 - [x] Home: Explain what this is about
