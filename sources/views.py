@@ -13,12 +13,12 @@ def index(request):
     }
     return render(request, 'sources/index.html', context)
 
-def detail(request, source_id):
+def detail(request, source_id, analysis_id):
     source = Source.objects.get(pk=source_id)
-    analyses = source.analysis_set.all()
+    analysis = Analysis.objects.get(pk=analysis_id)
     context = {
         'source': source,
-        'analyses': analyses,
+        'analysis': analysis,
     }
     return render(request, 'sources/detail.html', context)
 
