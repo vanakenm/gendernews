@@ -22,6 +22,15 @@ def detail(request, source_id, analysis_id):
     }
     return render(request, 'sources/detail.html', context)
 
+def site(request, source_id):
+    source = Source.objects.get(pk=source_id)
+    analyses = source.analysis_set.order_by("-date")[:7]
+    context = {
+        'source': source,
+        'analyses': analyses,
+    }
+    return render(request, 'sources/site.html', context)
+
 def screenshot(request, source_id, analysis_id):
     analysis = Analysis.objects.get(pk=analysis_id)
     html = analysis.html

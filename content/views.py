@@ -33,7 +33,7 @@ def send_message(request):
     if(contact.id):
         notice = 'Message envoyé avec succès!'
     else:
-        notice =  'Une erreur est survenue lors de l\'envoi du message!'
+        notice = 'Une erreur est survenue lors de l\'envoi du message!'
 
     context = {'notice': notice}
     return render(request, 'content/contact.html', context)

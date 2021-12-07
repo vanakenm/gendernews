@@ -12,7 +12,8 @@ Method for now is quite simple:
 
 ### v1
 
-- [ ] Contact (page ok, need to send email)
+- [ ] Source page: total citation, history per day, word cloud?
+- [x] Contact (page ok, need to send email)
 - [x] Add prev/next day to dashboard
 - [x] Analysis detail page (with prev/next)
 - [x] Let's start in french, but translatable already?

@@ -1,0 +1,68 @@
+{% extends 'content/base.html' %}
+{% block content %}
+
+<div class="bg-gray-50">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+
+    <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-2">
+      Résultats de la semaine passée pour le site:  {{ source.name }}
+    </h2>
+    <p class="text-center text-gray-600 font-medium mb-4">
+      Page analysée: {{ source.url }}
+    </p>
+
+
+<div class="bg-white shadow overflow-hidden sm:rounded-md">
+  <ul role="list" class="divide-y divide-gray-200">
+    {% for analyse in analyses %}
+    <li>
+      <a href="/sources/{{ source.id }}/analysis/{{ analyse.id }}" class="block hover:bg-gray-50">
+        <div class="flex items-center px-4 py-4 sm:px-6">
+          <div class="min-w-0 flex-1 flex items-center">
+            <div class="w-20">
+              <img src="{{source.logoUrl }}" class="h-6" />
+            </div>
+            <div class="flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+              <div>
+                <p class="text-right font-medium text-gray-700">{{ analyse.date|date:'l j F Y' }}</p>
+                <p class="text-sm font-medium text-indigo-600 truncate">{{ source.name }}</p>
+              </div>
+              <div class="hidden md:block">
+                <div>
+                  <p class="text-sm text-gray-900">
+                    {% include "sources/daily_chart.html" with stats=analyse.stats %}
+                  </p>
+                  <p class="mt-2 flex items-center text-sm text-gray-500">
+                    <!-- Heroicon name: solid/check-circle -->
+                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    {{ analyse.stats.total }} noms identifiés dont {{analyse.stats.female }} femmes et {{ analyse.stats.male }} hommes
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <!-- Heroicon name: solid/chevron-right -->
+            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+</div>
+</div>
+
+{% endblock %}
