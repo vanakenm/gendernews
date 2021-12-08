@@ -12,7 +12,7 @@ Method for now is quite simple:
 
 ### v1
 
-- [ ] Source page: total citation, history per day, word cloud?
+- [x] Source page: total citation, history per day, word cloud?
 - [x] Contact (page ok, need to send email)
 - [x] Add prev/next day to dashboard
 - [x] Analysis detail page (with prev/next)
@@ -26,6 +26,8 @@ Method for now is quite simple:
 
 ### Later
 
+- [ ] Add links to the articles/titles found, to allow "gendered news"
+  - For fun - remove male news from a site? 
 - [ ] Add sentiment analysis on titles?
 - [ ] Check hugging face interface/api for easy module switch?
   - Ex: https://huggingface.co/qanastek/pos-french

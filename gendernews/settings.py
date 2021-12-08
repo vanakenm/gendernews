@@ -86,19 +86,19 @@ WSGI_APPLICATION = 'gendernews.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'gendernews',
-    #     'USER': 'martin',
-    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd7g1v0kpil7509',
-        'USER': 'jwaefjzelpegqh',
-        'PASSWORD': 'e46dc9aadafdbdd131c3f4b6eec1aa740addfd94ff40e127d5679c800198c6d4',
-        'HOST': 'ec2-52-71-217-158.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'gendernews',
+        'USER': 'martin',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'd7g1v0kpil7509',
+    #     'USER': 'jwaefjzelpegqh',
+    #     'PASSWORD': 'e46dc9aadafdbdd131c3f4b6eec1aa740addfd94ff40e127d5679c800198c6d4',
+    #     'HOST': 'ec2-52-71-217-158.compute-1.amazonaws.com',
+    #     'PORT': '5432',
+    # }
 }
 
 

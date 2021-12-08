@@ -16,11 +16,24 @@ class Source(models.Model):
           else:
             return None
         else:
-          return self.analysis_set.latest('date')
+          if(self.analysis_set.count() > 0):
+            return self.analysis_set.latest('date')
+          else:
+            return None
 
     def __str__(self):
         return self.name
-
+    
+    def names(self, days=7):
+        anas = self.analysis_set.order_by('-date')[:days]
+        names = {}
+        for analysis in anas:
+            a_names = analysis.results["names"]
+            for name in a_names:
+                if not name["name"] in names:
+                    names[name["name"]] = 0
+                names[name["name"]] += 1
+        return names
 
 class Analysis(models.Model):
     source = models.ForeignKey(Source, on_delete=models.CASCADE)
