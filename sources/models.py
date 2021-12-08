@@ -47,6 +47,10 @@ class Analysis(models.Model):
       female = len(names) - male
       total = len(names)
 
+      if(total == 0):
+        return {"male": male, "malepc": 0, "femalepc": 0 , "female": female, "total": total}
+
+
       return {"male": male, "malepc": int((male * 100) / total), "femalepc": int((female * 100) / total) , "female": female, "total": total}
 
     def __str__(self):
