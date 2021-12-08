@@ -1,23 +1,36 @@
 {% load static tailwind_tags %}
 <html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>News check - statistiques sur les sites de news belges</title>
-    {% tailwind_css %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
-  <body class="bg-gray-50 font-serif leading-normal tracking-normal">
-    <script src="//unpkg.com/alpinejs" defer></script>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% include "content/header.html" %}
-    
-    {% block content %}
-    {% endblock %} 
+  <title>News check - statistiques sur les sites de news belges</title>
+  {% tailwind_css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TQ6HHMTXE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8TQ6HHMTXE');
+  </script>
+</head>
 
-    {% include "content/footer.html" %}
+<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+  <script src="//unpkg.com/alpinejs" defer></script>
 
-  </body>
+  {% include "content/header.html" %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% include "content/footer.html" %}
+
+</body>
+
 </html>
