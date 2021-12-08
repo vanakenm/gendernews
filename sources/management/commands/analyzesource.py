@@ -6,8 +6,13 @@ from sources.models import Analysis
 import datetime
 
 class Command(AnalysisCommand):
+    def add_arguments(self, parser):
+        parser.add_argument('source_name', type=str)
+
     def handle(self, *args, **options):
-        source_name = args[0]
+        source_name = options["source_name"]
+
+        print("Analyzing source: " + source_name)
 
         source = Source.objects.get(name=source_name)
         url = source.url
