@@ -48,10 +48,27 @@ module.exports = {
          * and make sure the pattern below matches your project structure.
          */
         // '../../**/*.py'
+        ],
+    safelist: [
+        'bg-male-300',
+        'bg-male-500',
+        'bg-female-300',
+        'bg-female-500',
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                male: { 
+                    300: '#8AAF9E',
+                    500: '#68D7C6' 
+                },
+                female: { 
+                    300: '#DFACFC',
+                    500: '#BE8AFA' 
+                }
+            },
+        },
     },
     variants: {
         extend: {},
