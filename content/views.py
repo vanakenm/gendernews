@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from content.models import Contact
+from content.models import Contact, ReleaseNote
 
 def index(request):
     context = {}
@@ -12,6 +12,12 @@ def about(request):
 def contact(request):
     context = {}
     return render(request, 'content/contact.html', context)
+
+def notes(request):
+    context = {
+        'notes': ReleaseNote.objects.all().order_by('-created_at')
+    }
+    return render(request, 'content/notes.html', context)
 
 def error_404(request, exception):
     context = {}

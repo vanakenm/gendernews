@@ -1,0 +1,45 @@
+{% extends 'content/base.html' %}
+{% block content %}
+{% load static %}
+<style>
+  .note-content > a {
+    text-decoration: underline;
+    color: #222222;
+  }
+</style>
+<div class="bg-gray-50">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
+      <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        Mises à jour
+      </h2>
+    </div>
+    <div>
+      <ul role="list" class="divide-y divide-gray-200">
+        {% for note in notes %}
+          <li class="py-4">
+            <div class="flex space-x-3">
+              <img class="h-6 w-6 rounded-full" src="https://pbs.twimg.com/profile_images/378800000551111238/934851994d52ee9f4d7dab8a5c7420c9_400x400.png" alt="">
+              <div class="flex-1 space-y-1">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-medium">{{ note.title }}</h3>
+                  <p class="text-sm text-gray-500">{{ note.release_date|date:'l j F Y' }}</p>
+                </div>
+                <p class="text-gray-500 note-content">
+                  {% autoescape off %}
+                  {{ note.description }}
+                  {% endautoescape %}
+                </p>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+    
+        <!-- More items... -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

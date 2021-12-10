@@ -21,12 +21,12 @@
     <h2 class="text-2xl font-extrabold text-gray-900 sm:text-4xl mb-4">{{ analysis.stats.total }} noms identifiés dont {{analysis.stats.female }} femmes et {{ analysis.stats.male }} hommes </h2>
     {% include "sources/daily_chart.html" with stats=analysis.stats %}
     <div>
-      <p class="mb-4">Ci-dessous la liste des titres où un <span class="bg-male-300">homme</span> ou une <span class="bg-female-300">femme</span> a été identifiée (surlignée en couleur sur chaque ligne)</p>
+      <p class="mb-4">Ci-dessous la liste des titres où un <span class="bg-male-300 shadow-md p-0.5">homme</span> ou une <span class="bg-female-300 shadow-md p-0.5">femme</span> a été identifiée (surlignée en couleur sur chaque ligne)</p>
       <div>
         <ul role="list" class="mx-2 divide-y divide-gray-200">
           {% for result in analysis.results.names %}
           <li class="py-4">
-            {{result.before}} <span class="bg-{{ result.gender }}-300"> {{ result.name }}</span>{{ result.after }}
+            {{result.before}} <span class="bg-{{ result.gender }}-300 shadow-md p-0.5"> {{ result.name }}</span>{{ result.after }}
           </li>
           {% endfor %}
         </ul>
