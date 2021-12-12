@@ -9,16 +9,31 @@ import datetime
 
 class AnalysisCommand(BaseCommand):
     help = 'Run analysis for all sources'
-    nlp = spacy.load("fr_core_news_sm")
+    nl_model = spacy.load("nl_core_news_sm")
+    fr_model = spacy.load("fr_core_news_sm")
+
+    models = {
+      "nl": {
+        "model": nl_model,
+        "tag": "PERSON"
+      },
+      "fr": {
+        "model": fr_model,
+        "tag": "PER"
+      }
+    }
+
     d = gender.Detector()
 
-    def get_results(self, titles, name):
+    def get_results(self, titles, name, language):
+      nlp = self.models[language]["model"]
       results = {}
       names_found = []
+      print("Analying: " + name + " in " + language)
       for(title) in titles:
-          doc = self.nlp(title)
+          doc = nlp(title)
           for word in doc.ents:
-              if(word.label_ == "PER"):
+              if(word.label_ == self.models[language]["tag"]):
                   gender = self.d.get_gender(word.text.split(" ")[0])
                   if(gender != "unknown"):
                       print(name + ":" + word.text + " - " + gender)

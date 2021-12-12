@@ -7,6 +7,7 @@ class Source(models.Model):
     url = models.URLField(max_length=200)
     logoUrl = models.URLField(max_length=200, null=True)
     finder = models.CharField(max_length=20)
+    locale = models.CharField(max_length=10, default="fr-BE")
 
     def last_analysis(self, date=None):
         if(date):
@@ -23,7 +24,13 @@ class Source(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+    def language(self):
+        return self.locale.split("-")[0]
+
+    def country_code(self):
+        return self.locale.split("-")[1]
+        
     def names(self, days=7):
         anas = self.analysis_set.order_by('-date')[:days]
         names = {}
@@ -51,7 +58,8 @@ class Analysis(models.Model):
         return {"male": male, "malepc": 0, "femalepc": 0 , "female": female, "total": total}
 
 
-      return {"male": male, "malepc": int((male * 100) / total), "femalepc": int((female * 100) / total) , "female": female, "total": total}
+      femalepc = int((female * 100) / total)
+      return {"male": male, "malepc": 100 - femalepc, "femalepc":  femalepc, "female": female, "total": total}
 
     def __str__(self):
         return self.source.name + " - " + self.date.strftime("%Y-%m-%d")
