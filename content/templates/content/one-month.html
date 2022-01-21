@@ -1,0 +1,89 @@
+{% extends 'content/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="relative py-16 bg-white overflow-hidden">
+  <div class="relative px-4 sm:px-6 lg:px-8">
+    <div class="text-lg max-w-screen-md mx-auto">
+      <h1>
+        <span class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">Posts</span>
+        <span class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Un mois de checks</span>
+      </h1>
+      <p class="mt-8 text-xl text-gray-500 leading-8">
+        J'ai lancé newscheck.info il y a un mois environs. Avec les données collectées depuis il me semblait de faire un premier points sur les résultats, apprentissages, limites et opportunités présentes dans le projet
+      </p>
+    </div>
+    <div class="mt-6 prose-lg prose-indigo max-w-screen-md  text-gray-500 mx-auto">
+      <h2>Principaux résultats</h2>
+      <div class="w-1/2 mx-auto">  
+        <canvas id="pieChart"></canvas>
+      </div>
+      <p>Sur ce mois d'analyse, quelques chiffres</p>
+      <ul role="list">
+        <li><b>4157</b> noms avec un genre identifiable ont été extraits des différents titres d'articles.</li>
+        <li>Sur ceux-ci, <b>3012</b> masculins et <b>1145</b> féminin (soit <b>27%</b>).</li>
+        <li>Les ratios sont assez similaires parmis les sources, mais c'est RTL Info qui a le pourcentage le plus élévé (<b>34%</b>) et Le Soir le moins (<b>20%</b>).</li>
+      </ul>
+
+      <p>Dans un monde et un pays où les femmes représentent un peu plus de la moitié de la population (<a target="_blank" href="https://fr.wikipedia.org/wiki/D%C3%A9mographie_de_la_Belgique">97 hommes pour 100 femmes en Belgique</a>) cela implique <b>une-sous représentation des femmes dans les médias analysé de presque 50%!</b>.</p>
+      
+      <h2>Top 5 des personnalités par genre</h2>
+      Femmes:
+      <ul role="list">
+        {% for tm in top5female %}
+        <li><b>{{tm.name}}</b> avec <b>{{tm.total}}</b> mentions</li>
+        {% endfor %}
+      </ul>
+
+      Hommes:
+      <ul role="list">
+        {% for tm in top5male %}
+        <li><b>{{tm.name}}</b> avec <b>{{tm.total}}</b> mentions</li>
+        {% endfor %}
+      </ul>
+
+      <h2>Les erreurs les plus évidentes</h2>
+      <p>Qui dit analyse automatique dit inévitablement erreurs dans la classification. Deux exemples parmis les plus gros</p>
+      <ul role="list">
+        <li><b>"Eden Hazard"</b> est identifié comme... une femme par le détecteur de genre - probablement lié à un prénom peu commun.</li>
+        <li><b>"Corona"</b> est identifié comme un nom (de personne) féminin. Celui-ci devrait simplement être ignoré</li>
+      </ul>
+      <p>Que ces erreurs (et quelques autres) soient présentes ne me surprend pas vraiment. Au delà du fait qu'elles peuvent être corrigée (par exemple en développant progressivement une liste d'exceptions à utiliser avant de tenter la détection automatique), elles n'influent pas vraiment sur les résultats statistiques (les erreurs sont en nombre insuffisant et assez balancées pour ne pas changer fondamentalement les résultats).</p>
+      
+      <h2>Bilan et suite</h2>
+      <p>Comme indiqué plus haut - la présence d'erreurs et d'approximations ne changent malheureusement rien à un résultat extrêmement préoccupant: une large sous-représentation d'information parlant de femmes à travers tous les médias analysés.</p>
+      <p>Je continuer à penser qu'identifier un problème est une première étape en vue d'y remédier. Des statistiques comme celles-ci peuvent aider à factualiser une conclusion à laquelle beaucoup étaient sans doute déjà arrivés.</p>
+      <p>On me répondra sans doute que les médias ne sont "que" le reflet de la société et donc un symtôme plus qu'un problème - mais je suis de ceux qui pensent que la représentation est importante, particulièrement quand on se rend compte qu'on a "effacé/minimisé" pas mal de contribution de femmes ou d'autres profiles. L'histoire après tout est écrire par les vainqueurs. Parler plus, donner une visibilité plus représentative de la place de chacun.e dans la société ne peut je pense que nous faire avancer.</p>
+      <p>Pour la suite - quand le temps le permet, j'ai en tête plusieurs éléments:</p>
+      <ul role="list">
+        <li>Améliorer l'analyse en utlisant les flux RSS plutôt que du "scrapping" (lire le site automatiquement) - ceci devrait donner plus de matière</li>
+        <li>Améliorer la détection des noms en se fiant à des listes de références (par exemple Wikipedia qui possède de l'information catégorisée sur un grand nombre de personnes)</li>
+        <li>Créer des liste d'exception pour certaines erreurs grossières de classification (comme le cas d'Eden Hazard décrit plus haut)</li>
+      </ul>
+      <p>Vous avez des idées, remarques, propositions? <a href="https://www.newscheck.info/contact">Contactez-moi!</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ctx = document.getElementById('pieChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        datasets: [{
+        data: [3012, 1145],
+        backgroundColor: [
+        '#68D7C6',
+        '#BE8AFA',
+        ],
+    }],
+
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+          'Hommes',
+          'Femmes',
+      ]
+      },
+  });
+  </script>
+{% endblock content %}
