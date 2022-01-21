@@ -22,10 +22,11 @@
       </div>
       <div class="mt-8 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-0 lg:grid-cols-2">
       {% for source in sources %}
-      <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+      <div class="col-span-1 flex justify-center relative py-8 px-8 bg-gray-50">
         <a href="/sources/{{ source.id }}">
           <img class="max-h-12" src="{{ source.logoUrl }}" alt="{{ source.name }}">
         </a>
+        <img class="h-4 absolute bottom-1 right-1" src="https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/{{ source.country_code }}.svg" alt="{{ source.name }}">
       </div>
   {% endfor %}  
 

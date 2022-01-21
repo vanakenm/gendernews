@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count
 
 # Create your models here.
 
@@ -29,7 +30,7 @@ class Source(models.Model):
         return self.locale.split("-")[0]
 
     def country_code(self):
-        return self.locale.split("-")[1]
+        return self.locale.split("-")[1].lower()
         
     def names(self, days=7):
         anas = self.analysis_set.order_by('-date')[:days]
@@ -63,3 +64,15 @@ class Analysis(models.Model):
 
     def __str__(self):
         return self.source.name + " - " + self.date.strftime("%Y-%m-%d")
+
+class ReportLine(models.Model):
+    source_name = models.TextField()
+    date = models.DateTimeField('date published')
+    gender = models.TextField()
+    name = models.TextField()
+
+    @classmethod
+    def top5(cls, gender):
+      top5 = ReportLine.objects.filter(gender=gender).values('name').annotate(total=Count('name')).order_by('-total')[:5]
+      return top5
+

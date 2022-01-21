@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from content.models import Contact, ReleaseNote
+from sources.models import ReportLine
 
 def index(request):
     context = {}
@@ -18,6 +19,14 @@ def notes(request):
         'notes': ReleaseNote.objects.all().order_by('-created_at')
     }
     return render(request, 'content/notes.html', context)
+
+def one_month(request):
+    context = {
+        'top5male': ReportLine.top5('male'),
+        'top5female': ReportLine.top5('female')
+    }
+
+    return render(request, 'content/one-month.html', context)
 
 def error_404(request, exception):
     context = {}
