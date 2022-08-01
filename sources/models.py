@@ -9,7 +9,7 @@ class Source(models.Model):
     logoUrl = models.URLField(max_length=200, null=True)
     finder = models.CharField(max_length=20)
     locale = models.CharField(max_length=10, default="fr-BE")
-    twitter_handle = models.CharField(max_length=200, null=True)
+    twitter_handle = models.CharField(max_length=200, null=True, blank=True)
 
     def last_analysis(self, date=None):
         if(date):
