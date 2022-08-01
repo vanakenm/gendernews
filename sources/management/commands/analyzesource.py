@@ -22,7 +22,7 @@ class Command(AnalysisCommand):
         html = r.text
 
         soup = BeautifulSoup(html, 'html.parser')
-        article_titles = [x.text.strip() for x in soup.find_all(source.finder)]
+        article_titles = [x.text.strip() for x in soup.select(source.finder)]
         
         results = self.get_results(article_titles, name, source.language())
         
